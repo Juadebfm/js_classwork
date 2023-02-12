@@ -3,15 +3,14 @@
 
 // syntax
 //Note this functions accepted no arguments i.e no parameter was added
-function add2Numbers() {
+(function add2Numbers() {
   const a = 10;
   const b = 115;
   const result = a + b;
   console.log(result);
-}
+})();
 
 //call/invoke/execute the function below
-add2Numbers();
 
 //To make this better we add paramenters to this function
 function addTwoNumbers(a, b) {
@@ -19,7 +18,7 @@ function addTwoNumbers(a, b) {
   const result = a + b;
   console.log(result);
 }
-addTwoNumbers(400, 100); //arguments
+addTwoNumbers(40000000, 100); //arguments
 
 //Immediately Invoked Functions
 (function immInvoked() {
@@ -43,8 +42,9 @@ const something = () => {};
 
 //return value in functions if we want our function The return statement is used to return a particular value from the function to the function caller. The function will stop executing when the return statement is called. The return statement should be the last statement in a function because the code after the return statement will be unreachable.
 const myFunction = () => {
-  const a = 200;
   return a > 30;
+  const a = 200;
+  console.log("here");
 };
 
 const result = myFunction();
