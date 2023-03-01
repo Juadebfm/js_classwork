@@ -335,9 +335,24 @@ our team always plays 10 matches in the championship
 0 <= x <= 4
 0 <= y <= 4*/
 function points(games) {
-  return 0;
-}
+  let totalPoints = 0;
+  for (let i = 1; i < games.length; i++) {
+    const value = games[i];
 
+    const parts = value.split(":");
+
+    const x = parts[0];
+    const y = parts[1];
+
+    if (x > y) {
+      totalPoints = totalPoints + 3;
+    } else if (x === y) {
+      totalPoints += 1;
+    }
+  }
+  return totalPoints;
+}
+console.log(points(["3:1", "2:2", "0:1"]));
 /** Challenge 17 : Jenny has written a function that returns a greeting for a user. However, she's in love with Johnny, and would like to greet him slightly different. She added a special case to her function, but she made a mistake.
 
 Can you help her? */
