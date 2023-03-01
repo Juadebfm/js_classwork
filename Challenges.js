@@ -102,12 +102,33 @@ Examples (input -> output)
 6, "I"     -> "IIIIII"
 5, "Hello" -> "HelloHelloHelloHelloHello"*/
 function repeatStr(n, s) {
-  return "";
+  let startStr = "";
+  for (let i = 0; i < n; i++) {
+    startStr = startStr + s;
+  }
+  return startStr;
 }
+console.log(repeatStr(10, "Femi"));
+
+// troop 2
+function repeatStr2(n, s) {
+  return s.repeat(n);
+}
+console.log(repeatStr2(5, "Femi"));
 
 /*Challenge 7: Simple, remove the spaces from the string, then return the resultant string.*/
-function noSpace(x) {}
+function noSpace(x) {
+  const arr = x.split(" ");
 
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    const noSpaceArr = arr[i].trim();
+    newArr.push(noSpaceArr);
+  }
+  const finalStr = newArr.join("");
+  return finalStr;
+}
+console.log(noSpace("here my name"));
 /*Challenge 8: Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
 
 For example (Input -> Output):
@@ -229,10 +250,9 @@ Examples
 1601 --> 17
 2000 --> 20 */
 function century(year) {
-  // Finish this :)
-  return;
+  return Math.ceil(year / 100);
 }
-
+console.log(century(1500));
 /* Challenge 14: Your task is to create a function that does four basic mathematical operations.
 
 The function should take three arguments - operation(string/char), value1(number), value2(number).
@@ -244,15 +264,57 @@ Examples(Operator, value1, value2) --> output
 ('*', 5, 5) --> 25
 ('/', 49, 7) --> 7 */
 function basicOp(operation, value1, value2) {
-  // Code
+  let result;
+  switch (operation) {
+    case "+":
+      result = value1 + value2;
+      break;
+    case "-":
+      result = value1 - value2;
+      break;
+    case "*":
+      result = value1 * value2;
+      break;
+    case "/":
+      result = value1 / value2;
+      break;
+  }
+  return result;
 }
+console.log(basicOp("-", 100, 2));
+
+// troop 2
+function basicOp2(operation, value1, value2) {
+  const operationStr = value1 + operation + value2;
+  console.log(operationStr);
+  const result = eval(operationStr);
+  return result;
+}
+console.log(basicOp2("-", 100, 2));
 
 /* Challenge 15: Given an array of integers, return a new array with each value doubled.
 
 For example:
 
 [1, 2, 3] --> [2, 4, 6] */
-function maps(x) {}
+function maps(x) {
+  const result = x.map((xItem) => {
+    return xItem * 2;
+  });
+  return result;
+}
+console.log(maps([1, 3, 6]));
+
+// troop 2
+function maps2(x) {
+  let doubledArray = [];
+  for (let i = 0; i < x.length; i++) {
+    let doubled = x[i] * 2;
+    doubledArray.push(doubled);
+  }
+  return doubledArray;
+}
+console.log(maps2([1, 3, 6]));
 
 /* Challenge 16 : Our football team has finished the championship.
 
@@ -324,9 +386,18 @@ console.log(getAverage2([2, 2.0, 2, 2]));
 
 P.S. Each array includes only integer numbers. Output is a number too. */
 function arrayPlusArray(arr1, arr2) {
-  return arr1 + arr2; //something went wrong
-}
+  let sum = 0;
+  for (let i = 0; i < arr1.length; i++) {
+    const arr1Items = arr1[i];
+    const arr2Items = arr2[i];
 
+    const sumArr = arr1Items + arr2Items;
+
+    sum = sum + sumArr;
+  }
+  return sum;
+}
+console.log(arrayPlusArray([1, 2, 3], [1, 2, 30]));
 /**Challenge 20 : Let's play! You have to return which player won! In case of a draw return Draw!.
 
 Examples(Input1, Input2 --> Output):
@@ -367,9 +438,17 @@ console.log(rps2("scissors", "rock"));
 
 Return True if yes, False otherwise :) */
 function hero(bullets, dragons) {
-  //Get Coding!
+  return bullets / dragons >= 2;
 }
+console.log(hero(20, 100));
 
+// troop 2 more user friendly
+function hero2(bullets, dragons) {
+  return bullets / dragons >= 2
+    ? true + " : Hero Survives the mission and wins"
+    : false + " : Hero Dies and loses the mission";
+}
+console.log(hero2(20, 2));
 /**Challenge 22: Write a function to split a string and convert it into an array of words.
 
 Examples (Input ==> Output):
@@ -377,9 +456,10 @@ Examples (Input ==> Output):
 
 "I love arrays they are my favorite" ==> ["I", "love", "arrays" */
 function stringToArray(string) {
+  return string.split(" ");
   // code code code
 }
-
+console.log(stringToArray("femi Adebowale"));
 /**Challenge 23: The function is not returning the correct values. Can you figure out why?
 
 Example (Input --> Output ):
